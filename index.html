@@ -4,72 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuarios - Sistema Beta v1.2.3</title>
-    <!-- Bootstrap 5 CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- codigo viejo del diseño anterior -->
-    <!-- <style>
-        body {
-            background-color: #f0f0f0;
-        }
-        .old-header {
-            background-color: #ff6b6b;
-            color: white;
-        }
-        .deprecated-button {
-            background-color: #4ecdc4;
-        }
-    </style> -->
+    <!-- Código modificado: CDN de Bootstrap reemplazado por archivos locales (línea 8) -->
+    <!-- Razón: Usar archivos locales mejora el rendimiento, permite trabajar offline y evita dependencias externas -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Código eliminado: Estilos del diseño anterior ya no utilizados (líneas 9-21) -->
 </head>
 <body class="bg-light">
     <div class="container py-5">
         <div class="card shadow-lg mb-4">
             <div class="card-header bg-primary text-white">
                 <h2 class="mb-0">📝 Registro de Usuarios</h2>
-                <small>Sistema de Base de Datos v1.2.3 - Puerto 8080 - MySQL 5.7</small>
+            <!-- Código eliminado: Comentario del sistema de base de datos removido (línea 17) -->
             </div>
             <div class="card-body">
                 <form id="registroForm">
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="nombre" class="form-label">Nombre(s)</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre">
+                            <label for="nombre" class="form-label">Nombre(s) <span class="text-danger">*</span></label>
+                            <!-- Código agregado: Atributos de validación HTML5 implementados -->
+                            <!-- Razón: Validación del lado del cliente mejora la experiencia del usuario y reduce errores -->
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="nombre" 
+                                   name="nombre"
+                                   placeholder="Ingresa tu nombre"
+                                   required
+                                   pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
+                                   minlength="2"
+                                   maxlength="100">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="apellido1" class="form-label">Primer Apellido</label>
-                            <input type="text" class="form-control" id="apellido1" placeholder="Primer apellido">
+                            <label for="apellido1" class="form-label">Primer Apellido <span class="text-danger">*</span></label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="apellido1" 
+                                   name="apellido1"
+                                   placeholder="Primer apellido"
+                                   required
+                                   pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
+                                   minlength="2"
+                                   maxlength="100">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="apellido2" class="form-label">Segundo Apellido</label>
-                            <input type="text" class="form-control" id="apellido2" placeholder="Segundo apellido">
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="apellido2" 
+                                   name="apellido2"
+                                   placeholder="Segundo apellido"
+                                   pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]*$"
+                                   minlength="2"
+                                   maxlength="100">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="telefono" class="form-label">Teléfono</label>
-                            <input type="text" class="form-control" id="telefono" placeholder="10 dígitos">
+                            <label for="telefono" class="form-label">Teléfono <span class="text-danger">*</span></label>
+                            <input type="tel" 
+                                   class="form-control" 
+                                   id="telefono" 
+                                   name="telefono"
+                                   placeholder="10 dígitos"
+                                   required
+                                   pattern="^\d{10}$"
+                                   minlength="10"
+                                   maxlength="10">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="curp" class="form-label">CURP</label>
-                            <input type="text" class="form-control" id="curp" placeholder="18 caracteres">
+                            <label for="curp" class="form-label">CURP <span class="text-danger">*</span></label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="curp" 
+                                   name="curp"
+                                   placeholder="18 caracteres"
+                                   required
+                                   pattern="^[A-Z]{4}\d{6}[HM][A-Z]{5}[0-9A-Z]\d$"
+                                   minlength="18"
+                                   maxlength="18"
+                                   style="text-transform: uppercase;">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="email" class="form-label">Correo Electrónico</label>
-                            <input type="text" class="form-control" id="email" placeholder="ejemplo@correo.com">
+                            <label for="email" class="form-label">Correo Electrónico <span class="text-danger">*</span></label>
+                            <input type="email" 
+                                   class="form-control" 
+                                   id="email" 
+                                   name="email"
+                                   placeholder="ejemplo@correo.com"
+                                   required
+                                   maxlength="255">
                         </div>
                     </div>
 
-                    <!--
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password">
-                        </div>
-                    </div>
-                    -->
+                    <!-- Código eliminado: Campo de contraseña removido del sistema (líneas 65-72) -->
 
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-primary btn-lg">
@@ -107,8 +137,11 @@
         </div>
     </div>
 
-    <!-- Bootstrap 5 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Código modificado: CDN de Bootstrap JS reemplazado por archivo local (línea 111) -->
+    <!-- Razón: Usar archivos locales mejora el rendimiento, permite trabajar offline y evita dependencias externas -->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Configuración del sistema (debe cargarse antes de script.js) -->
+    <script src="config.js"></script>
     <!-- Script principal -->
     <script src="script.js"></script>
 </body>
